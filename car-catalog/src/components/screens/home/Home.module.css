@@ -1,11 +1,24 @@
 .item {
     border: 1px solid gray;
+    margin-bottom: 30px;
 }
 
 .image {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 400px;
+    width: 500px;
     height: 400px;
+}
+
+.info {
+    padding: 10px;
+}
+
+.info h2 {
+    margin-bottom: 20px;
+}
+
+.info p {
+    margin-bottom: 10px;
 }
