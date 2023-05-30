@@ -1,0 +1,11 @@
+.item {
+    border: 1px solid gray;
+}
+
+.image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 400px;
+    height: 400px;
+}
