@@ -1,23 +1,31 @@
 import styles from './Home.module.css'
-import bmw1 from '../../../../public/bmw1.jpg'
+import {cars} from './cars.data.js'
 
 function Home() {
     return (
         <div>
             <h1>Cars catalog</h1>
             <div>
-                <div className={styles.item}>
-                    <div className={styles.image}
-                         style={
-                             {
-                                 backgroundImage: 'url(/bmw1.jpg)'
-                             }
-                         }>
+                {cars.length ? cars.map(car => (
+                    <div key={car.id} className={styles.item}>
+                        <div
+                            className={styles.image}
+                            style={{
+                                backgroundImage: `url(${car.image})`
+                            }}
+                        />
+                        <div className={styles.info}>
+                            <h2>{car.name}</h2>
+                            <p>{new Intl.NumberFormat('en-US', {
+                                style: 'currency',
+                                currency: 'USD',
+                            }).format(car.price)}
+                            </p>
+                            <button>Read more</button>
+                        </div>
                     </div>
-                    <h2>Car 1</h2>
-                    <p>$100 000</p>
-                    <button>Read more</button>
-                </div>
+                ))
+                : <p>No cars</p>}
             </div>
         </div>
     )
