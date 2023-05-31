@@ -1,12 +1,21 @@
 import {cars as carsData} from './cars.data.js'
 import CarItem from "./car-item/CarItem.jsx";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import CreateCarForm from "./create-car-form/CreateCarForm.jsx";
 
 function Home() {
     // const filteredCars = useMemo(() => cars.filter(car => car.price > 20000), [])
-    const [cars, setCars] = useState(carsData)
-    console.log(cars)
+    const [cars, setCars] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch('http://localhost:4200/cars')
+            const data = await response.json()
+            setCars(data)
+        }
+
+        fetchData()
+    }, [])
 
     return (
         <div>
