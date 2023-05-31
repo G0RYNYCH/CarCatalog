@@ -2,6 +2,8 @@ import {cars as carsData} from './cars.data.js'
 import CarItem from "./car-item/CarItem.jsx";
 import {useEffect, useState} from "react";
 import CreateCarForm from "./create-car-form/CreateCarForm.jsx";
+import axios from "axios";
+import {CarService} from "../../../services/car.service.js";
 
 function Home() {
     // const filteredCars = useMemo(() => cars.filter(car => car.price > 20000), [])
@@ -9,8 +11,7 @@ function Home() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch('http://localhost:4200/cars')
-            const data = await response.json()
+            const data = await CarService.getAll()
             setCars(data)
         }
 
